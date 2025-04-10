@@ -66,46 +66,59 @@ export default function DessertDashboard() {
   };
 
   const uploadFile = async () => {
-    if (!file) return;
-    
-    setIsLoading(true);
-    const formData = new FormData();
-    formData.append('file', file);
-    
-    try {
-      const response = await fetch('http://localhost:5000/api/forecast', {
-        method: 'POST',
-        body: formData
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to get forecast');
-      }
-      
-      const data = await response.json();
-      
-      // Make sure the data has the expected structure
-      if (!data || !data.forecast || !data.historical || !data.top_items) {
-        throw new Error('Invalid data format received from server');
-      }
-      
-      setForecastData(data.forecast);
-      setHistoricalData(data.historical);
-      setTopItems(data.top_items || []);
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error processing file: ' + error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  if (!file) {
+    alert('Please select a file first');
+    return;
+  }
 
-  const handleFileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-    }
-  };
+  setIsLoading(true);
+  const formData = new FormData();
+  formData.append('file', file);
 
+  try {
+    const response = await fetch('http://localhost:5000/api/forecast', {
+      method: 'POST',
+      body: formData,
+      // Don't set Content-Type header - the browser will set it automatically
+      // with the correct boundary for FormData
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to process file');
+    }
+
+    if (!data || !data.forecast) {
+      throw new Error('Invalid response format');
+    }
+
+    // Update state with new data
+    setForecastData(data.forecast);
+    setHistoricalData(data.historical || []);
+    setTopItems(data.top_items || []);
+    
+    // Switch to overview tab to show results
+    setActiveTab('overview');
+
+  } catch (error) {
+    console.error('Error:', error);
+    alert(`Error: ${error.message}`);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+// Update the file input handler to reset states when new file is selected
+const handleFileChange = (e) => {
+  if (e.target.files && e.target.files[0]) {
+    setFile(e.target.files[0]);
+    // Reset data states when new file is selected
+    setForecastData([]);
+    setHistoricalData([]);
+    setTopItems([]);
+  }
+};
   // Load sample data on first render
   useEffect(() => {
     const loadSampleData = async () => {

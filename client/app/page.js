@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { PieChart, Upload, User } from 'lucide-react';
+import { PieChart, Upload, User, Gift, ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
 
 // Fallback sample data
 const FALLBACK_SAMPLE_DATA = {
@@ -297,25 +298,29 @@ const handleFileChange = (e) => {
             <h1 className="ml-3 text-2xl font-bold text-pink-800">Strictly Desserts</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="relative">
-              <label className="cursor-pointer bg-white px-3 py-2 rounded-lg text-sm font-medium text-pink-700 hover:bg-pink-100 transition-colors flex items-center">
-                <Upload className="h-4 w-4 mr-1" />
-                Upload Sales Data
-                <input 
-                  type="file" 
-                  accept=".csv" 
-                  className="hidden" 
-                  onChange={handleFileChange}
-                />
+            <Link href="/customer" className="flex items-center text-pink-600 hover:text-pink-800">
+              <ShoppingCart className="w-5 h-5 mr-2" />
+              <span>Customer Portal</span>
+            </Link>
+            <Link href="/recommendations" className="flex items-center text-pink-600 hover:text-pink-800">
+              <Gift className="w-5 h-5 mr-2" />
+              <span>Recommendations</span>
+            </Link>
+            <div className="flex items-center space-x-2">
+              <Upload className="w-5 h-5 text-pink-600" />
+              <input
+                type="file"
+                accept=".csv"
+                onChange={handleFileChange}
+                className="hidden"
+                id="file-upload"
+              />
+              <label
+                htmlFor="file-upload"
+                className="cursor-pointer bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors"
+              >
+                Upload Data
               </label>
-              {file && (
-                <button 
-                  onClick={uploadFile}
-                  className="absolute top-full mt-1 left-0 right-0 bg-pink-500 text-white py-1 rounded text-sm hover:bg-pink-600"
-                >
-                  Process
-                </button>
-              )}
             </div>
             <button className="p-2 rounded-full hover:bg-pink-300 transition-colors">
               <User className="h-6 w-6 text-pink-700" />

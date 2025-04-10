@@ -1,0 +1,41 @@
+date,product,region,units_sold,revenue,event
+2025-04-03,Gulab Jamun,North India,45,4500,None
+2025-04-03,Rasmalai,North India,38,4560,None
+2025-04-03,Jalebi,North India,52,3120,None
+2025-04-03,Kaju Katli,North India,28,3360,None
+2025-04-03,Mysore Pak,South India,35,3150,None
+2025-04-04,Gulab Jamun,North India,52,5200,None
+2025-04-04,Rasmalai,North India,42,5040,None
+2025-04-04,Jalebi,North India,48,2880,None
+2025-04-04,Kaju Katli,North India,34,4080,None
+2025-04-04,Mysore Pak,South India,38,3420,None
+2025-04-05,Gulab Jamun,North India,58,5800,Weekend
+2025-04-05,Rasmalai,North India,49,5880,Weekend
+2025-04-05,Jalebi,North India,65,3900,Weekend
+2025-04-05,Kaju Katli,North India,42,5040,Weekend
+2025-04-05,Mysore Pak,South India,45,4050,Weekend
+2025-04-06,Gulab Jamun,North India,62,6200,Weekend
+2025-04-06,Rasmalai,North India,54,6480,Weekend
+2025-04-06,Jalebi,North India,70,4200,Weekend
+2025-04-06,Kaju Katli,North India,48,5760,Weekend
+2025-04-06,Mysore Pak,South India,50,4500,Weekend
+2025-04-07,Gulab Jamun,North India,48,4800,None
+2025-04-07,Rasmalai,North India,40,4800,None
+2025-04-07,Jalebi,North India,55,3300,None
+2025-04-07,Kaju Katli,North India,32,3840,None
+2025-04-07,Mysore Pak,South India,37,3330,None
+2025-04-08,Gulab Jamun,North India,50,5000,None
+2025-04-08,Rasmalai,North India,44,5280,None
+2025-04-08,Jalebi,North India,56,3360,None
+2025-04-08,Kaju Katli,North India,36,4320,None
+2025-04-08,Mysore Pak,South India,40,3600,None
+2025-04-09,Gulab Jamun,North India,53,5300,None
+2025-04-09,Rasmalai,North India,45,5400,None
+2025-04-09,Jalebi,North India,60,3600,None
+2025-04-09,Kaju Katli,North India,38,4560,None
+2025-04-09,Mysore Pak,South India,42,3780,None
+2025-04-10,Gulab Jamun,East India,25,2500,None
+2025-04-10,Payasam,South India,32,3520,None
+2025-04-10,Pista Barfi,West India,28,3080,None
+2025-04-10,Rasgulla,East India,40,3600,None
+2025-04-10,Ladoo,North India,36,3240,None

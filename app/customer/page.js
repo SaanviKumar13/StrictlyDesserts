@@ -56,7 +56,7 @@ export default function CustomerLandingPage() {
                 <div className="flex flex-col items-center">
                   <Cake className="h-12 w-12 text-pink-600 mb-4" />
                   <h3 className="text-xl font-semibold text-pink-800">Cakes</h3>
-                  <p className="text-gray-600 text-center mt-2">
+                  <p className="font-bold text-black text-center mt-2">
                     Birthday cakes, wedding cakes, and more
                   </p>
                 </div>
@@ -68,7 +68,7 @@ export default function CustomerLandingPage() {
                 <div className="flex flex-col items-center">
                   <Cookie className="h-12 w-12 text-pink-600 mb-4" />
                   <h3 className="text-xl font-semibold text-pink-800">Cookies</h3>
-                  <p className="text-gray-600 text-center mt-2">
+                  <p className="font-bold text-black text-center mt-2">
                     Freshly baked cookies and biscuits
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export default function CustomerLandingPage() {
                 <div className="flex flex-col items-center">
                   <Gift className="h-12 w-12 text-pink-600 mb-4" />
                   <h3 className="text-xl font-semibold text-pink-800">Special</h3>
-                  <p className="text-gray-600 text-center mt-2">
+                  <p className="font-bold text-black text-center mt-2">
                     Festival specials and seasonal treats
                   </p>
                 </div>
@@ -99,7 +99,7 @@ export default function CustomerLandingPage() {
                 <h3 className="text-xl font-semibold text-pink-800 mb-2">
                   Local Bakeries
                 </h3>
-                <p className="text-gray-600">
+                <p className="font-bold text-black">
                   Support your local bakers and enjoy fresh, homemade desserts
                 </p>
               </div>
@@ -108,7 +108,7 @@ export default function CustomerLandingPage() {
                 <h3 className="text-xl font-semibold text-pink-800 mb-2">
                   Special Offers
                 </h3>
-                <p className="text-gray-600">
+                <p className="font-bold text-black">
                   Exclusive deals and festival specials from your favorite bakeries
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function CustomerLandingPage() {
                 <h3 className="text-xl font-semibold text-pink-800 mb-2">
                   Fresh & Delicious
                 </h3>
-                <p className="text-gray-600">
+                <p className="font-bold text-black">
                   Handcrafted desserts made with love and premium ingredients
                 </p>
               </div>

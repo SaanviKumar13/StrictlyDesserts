@@ -177,7 +177,7 @@ export default function OrderPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SAMPLE_RECOMMENDATIONS.map((item) => (
               <div key={item.id} className="bg-white rounded-xl shadow-md p-4">
-                <h3 className="font-bold text-lg text-pink-800">{item.name}</h3>
+                <h3 className="text-lg font-bold text-black text-center mt-2">{item.name}</h3>
                 <p className="text-black text-sm mb-2">{item.bakery}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-pink-600 font-semibold">{formatPrice(item.price)}</span>

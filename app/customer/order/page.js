@@ -3,31 +3,28 @@ import { useState, useEffect } from 'react';
 import { Search, MapPin, Star, ShoppingCart, Filter } from 'lucide-react';
 import Link from 'next/link';
 
-// Sample data with dummy images
+// Sample data without images
 const SAMPLE_BAKERIES = [
   {
     id: 1,
     name: "Sweet Delights",
     rating: 4.8,
     distance: "0.5 miles",
-    specialties: ["Cakes", "Cupcakes", "Cookies"],
-    image: "https://placehold.co/400x300/pink/white?text=Sweet+Delights"
+    specialties: ["Cakes", "Cupcakes", "Cookies"]
   },
   {
     id: 2,
     name: "Cupcake Heaven",
     rating: 4.6,
     distance: "1.2 miles",
-    specialties: ["Cupcakes", "Cakes", "Pastries"],
-    image: "https://placehold.co/400x300/pink/white?text=Cupcake+Heaven"
+    specialties: ["Cupcakes", "Cakes", "Pastries"]
   },
   {
     id: 3,
     name: "Cookie Corner",
     rating: 4.7,
     distance: "0.8 miles",
-    specialties: ["Cookies", "Brownies", "Bars"],
-    image: "https://placehold.co/400x300/pink/white?text=Cookie+Corner"
+    specialties: ["Cookies", "Brownies", "Bars"]
   }
 ];
 
@@ -36,25 +33,22 @@ const SAMPLE_RECOMMENDATIONS = [
     id: 1,
     name: "Chocolate Fudge Cake",
     bakery: "Sweet Delights",
-    price: 24.99,
-    rating: 4.9,
-    image: "https://placehold.co/400x300/pink/white?text=Chocolate+Fudge+Cake"
+    price: 1200,
+    rating: 4.9
   },
   {
     id: 2,
     name: "Red Velvet Cupcake",
     bakery: "Cupcake Heaven",
-    price: 3.99,
-    rating: 4.8,
-    image: "https://placehold.co/400x300/pink/white?text=Red+Velvet+Cupcake"
+    price: 150,
+    rating: 4.8
   },
   {
     id: 3,
     name: "Chocolate Chip Cookie",
     bakery: "Cookie Corner",
-    price: 2.99,
-    rating: 4.7,
-    image: "https://placehold.co/400x300/pink/white?text=Chocolate+Chip+Cookie"
+    price: 80,
+    rating: 4.7
   }
 ];
 
@@ -65,7 +59,6 @@ export default function OrderPage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    // Get user's location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -83,6 +76,10 @@ export default function OrderPage() {
 
   const addToCart = (item) => {
     setCart([...cart, item]);
+  };
+
+  const formatPrice = (price) => {
+    return `₹${price.toLocaleString('en-IN')}`;
   };
 
   return (
@@ -110,18 +107,18 @@ export default function OrderPage() {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-400" />
               <input
                 type="text"
                 placeholder="Search for bakeries or desserts..."
-                className="w-full pl-10 pr-4 py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full pl-10 pr-4 py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 text-black"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             <div className="flex items-center text-pink-700">
               <MapPin className="h-5 w-5 mr-2" />
-              <span>
+              <span className="text-black">
                 {location
                   ? `Near ${location.lat.toFixed(2)}, ${location.lng.toFixed(2)}`
                   : 'Getting location...'}
@@ -136,7 +133,7 @@ export default function OrderPage() {
             className={`px-4 py-2 rounded-lg whitespace-nowrap ${
               selectedCategory === 'all'
                 ? 'bg-pink-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-pink-100'
+                : 'bg-white text-black hover:bg-pink-100'
             }`}
             onClick={() => setSelectedCategory('all')}
           >
@@ -146,7 +143,7 @@ export default function OrderPage() {
             className={`px-4 py-2 rounded-lg whitespace-nowrap ${
               selectedCategory === 'cakes'
                 ? 'bg-pink-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-pink-100'
+                : 'bg-white text-black hover:bg-pink-100'
             }`}
             onClick={() => setSelectedCategory('cakes')}
           >
@@ -156,7 +153,7 @@ export default function OrderPage() {
             className={`px-4 py-2 rounded-lg whitespace-nowrap ${
               selectedCategory === 'cookies'
                 ? 'bg-pink-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-pink-100'
+                : 'bg-white text-black hover:bg-pink-100'
             }`}
             onClick={() => setSelectedCategory('cookies')}
           >
@@ -166,7 +163,7 @@ export default function OrderPage() {
             className={`px-4 py-2 rounded-lg whitespace-nowrap ${
               selectedCategory === 'special'
                 ? 'bg-pink-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-pink-100'
+                : 'bg-white text-black hover:bg-pink-100'
             }`}
             onClick={() => setSelectedCategory('special')}
           >
@@ -179,26 +176,17 @@ export default function OrderPage() {
           <h2 className="text-2xl font-bold text-pink-800 mb-6">Recommended for You</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SAMPLE_RECOMMENDATIONS.map((item) => (
-              <div key={item.id} className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="h-48 bg-gray-200">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-lg text-pink-800">{item.name}</h3>
-                  <p className="text-gray-600 text-sm mb-2">{item.bakery}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-pink-600 font-semibold">${item.price}</span>
-                    <button
-                      onClick={() => addToCart(item)}
-                      className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
+              <div key={item.id} className="bg-white rounded-xl shadow-md p-4">
+                <h3 className="font-bold text-lg text-pink-800">{item.name}</h3>
+                <p className="text-black text-sm mb-2">{item.bakery}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-pink-600 font-semibold">{formatPrice(item.price)}</span>
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             ))}
@@ -210,43 +198,34 @@ export default function OrderPage() {
           <h2 className="text-2xl font-bold text-pink-800 mb-6">Nearby Bakeries</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SAMPLE_BAKERIES.map((bakery) => (
-              <div key={bakery.id} className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="h-48 bg-gray-200">
-                  <img
-                    src={bakery.image}
-                    alt={bakery.name}
-                    className="w-full h-full object-cover"
-                  />
+              <div key={bakery.id} className="bg-white rounded-xl shadow-md p-4">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-lg text-pink-800">{bakery.name}</h3>
+                  <div className="flex items-center">
+                    <Star className="h-5 w-5 text-yellow-400 mr-1" />
+                    <span className="text-black">{bakery.rating}</span>
+                  </div>
                 </div>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-lg text-pink-800">{bakery.name}</h3>
-                    <div className="flex items-center">
-                      <Star className="h-5 w-5 text-yellow-400 mr-1" />
-                      <span>{bakery.rating}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center text-gray-600 mb-2">
-                    <MapPin className="h-5 w-5 mr-2" />
-                    <span>{bakery.distance} away</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {bakery.specialties.map((specialty, index) => (
-                      <span
-                        key={index}
-                        className="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full"
-                      >
-                        {specialty}
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/customer/bakery/${bakery.id}`}
-                    className="block w-full bg-pink-500 text-white text-center py-2 rounded-lg hover:bg-pink-600 transition-colors"
-                  >
-                    View Menu
-                  </Link>
+                <div className="flex items-center text-black mb-2">
+                  <MapPin className="h-5 w-5 mr-2 text-pink-600" />
+                  <span className="text-black">{bakery.distance} away</span>
                 </div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {bakery.specialties.map((specialty, index) => (
+                    <span
+                      key={index}
+                      className="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full"
+                    >
+                      {specialty}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={`/customer/bakery/${bakery.id}`}
+                  className="block w-full bg-pink-500 text-white text-center py-2 rounded-lg hover:bg-pink-600 transition-colors"
+                >
+                  View Menu
+                </Link>
               </div>
             ))}
           </div>

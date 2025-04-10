@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { Cake, Cookie, Bread, Gift, MapPin } from 'lucide-react';
+import { Cake, Cookie, Gift, MapPin } from 'lucide-react';
 
 export default function CustomerLandingPage() {
   return (
@@ -73,18 +73,7 @@ export default function CustomerLandingPage() {
                   </p>
                 </div>
               </Link>
-              <Link
-                href="/customer/order?category=bread"
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-              >
-                <div className="flex flex-col items-center">
-                  <Bread className="h-12 w-12 text-pink-600 mb-4" />
-                  <h3 className="text-xl font-semibold text-pink-800">Bread</h3>
-                  <p className="text-gray-600 text-center mt-2">
-                    Artisan bread and pastries
-                  </p>
-                </div>
-              </Link>
+              
               <Link
                 href="/customer/order?category=special"
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"

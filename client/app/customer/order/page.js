@@ -158,13 +158,13 @@ export default function CustomerOrderPage() {
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-lg">{item.name}</h3>
+                    <h3 className="font-bold text-lg text-pink-800">{item.name}</h3> {/* Changed to text-pink-800 */}
                     <span className="text-pink-600 font-semibold">{item.price}</span>
                   </div>
                   <p className="text-gray-600 text-sm">{item.bakery}</p>
                   <div className="flex items-center mt-2">
                     <Star className="h-4 w-4 text-yellow-400 mr-1" />
-                    <span className="text-sm">{item.rating}</span>
+                    <span className="text-sm text-black">{item.rating}</span> {/* Changed to black */}
                   </div>
                   <button
                     onClick={() => addToCart(item)}
@@ -189,10 +189,10 @@ export default function CustomerOrderPage() {
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-lg">{bakery.name}</h3>
+                    <h3 className="font-bold text-lg text-pink-800">{bakery.name}</h3> {/* Changed to text-pink-800 */}
                     <div className="flex items-center">
                       <Star className="h-4 w-4 text-yellow-400 mr-1" />
-                      <span>{bakery.rating}</span>
+                      <span className="text-black">{bakery.rating}</span> {/* Changed to black */}
                     </div>
                   </div>
                   <div className="flex items-center text-sm text-gray-600 mt-1">
@@ -200,7 +200,7 @@ export default function CustomerOrderPage() {
                     <span>{bakery.distance} away</span>
                   </div>
                   <div className="mt-2">
-                    <h4 className="font-semibold text-sm">Specialties:</h4>
+                    <h4 className="font-bold text-black text-sm">Specialties:</h4> {/* Changed to black bold */}
                     <div className="flex flex-wrap gap-2 mt-1">
                       {bakery.specialties.map((specialty, index) => (
                         <span
@@ -213,7 +213,7 @@ export default function CustomerOrderPage() {
                     </div>
                   </div>
                   <div className="mt-4">
-                    <h4 className="font-semibold text-sm flex items-center">
+                    <h4 className="font-bold text-black text-sm flex items-center"> {/* Changed to black bold */}
                       <Gift className="h-4 w-4 mr-1" />
                       Current Offers
                     </h4>
@@ -227,7 +227,7 @@ export default function CustomerOrderPage() {
                     </ul>
                   </div>
                   <div className="mt-4">
-                    <h4 className="font-semibold text-sm flex items-center">
+                    <h4 className="font-bold text-black text-sm flex items-center"> {/* Changed to black bold */}
                       <Gift className="h-4 w-4 mr-1" />
                       Festival Offers
                     </h4>
@@ -255,11 +255,11 @@ export default function CustomerOrderPage() {
 
       <footer className="bg-white border-t border-pink-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <p className="text-sm text-pink-600">
+          <p className="text-sm text-pink-600 text-center">
             © 2025 Strictly Desserts. All rights reserved.
           </p>
         </div>
       </footer>
     </div>
   );
-} 
+}

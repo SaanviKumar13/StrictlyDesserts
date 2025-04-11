@@ -98,16 +98,16 @@ export default function CartPage() {
                         <div className="flex items-center mt-2">
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="w-8 h-8 flex items-center justify-center border border-pink-300 rounded-l-lg"
+                            className="w-8 h-8 flex items-center justify-center border border-pink-300 rounded-l-lg text-black"
                           >
                             -
                           </button>
-                          <span className="w-8 h-8 flex items-center justify-center border-t border-b border-pink-300">
+                          <span className="w-8 h-8 flex items-center justify-center border-t border-b border-pink-300 text-black">
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="w-8 h-8 flex items-center justify-center border border-pink-300 rounded-r-lg"
+                            className="w-8 h-8 flex items-center justify-center border border-pink-300 rounded-r-lg text-black"
                           >
                             +
                           </button>
@@ -135,15 +135,15 @@ export default function CartPage() {
                 <div className="space-y-2 mb-4">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span style={{ color: '#f48fb1' }}>${subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Delivery Fee</span>
-                    <span>${deliveryFee.toFixed(2)}</span>
+                    <span style={{ color: '#f48fb1' }}>${deliveryFee.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Tax (8%)</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span style={{ color: '#f48fb1' }}>${tax.toFixed(2)}</span>
                   </div>
                   <div className="border-t border-pink-100 pt-2 mt-2">
                     <div className="flex justify-between font-semibold text-pink-800">
@@ -158,13 +158,14 @@ export default function CartPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Delivery Address
                     </label>
-                    <input
-                      type="text"
-                      value={deliveryAddress}
-                      onChange={(e) => setDeliveryAddress(e.target.value)}
-                      className="w-full px-3 py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                      placeholder="Enter your delivery address"
-                    />
+                      <input
+                          type="text"
+                          value={deliveryAddress}
+                          onChange={(e) => setDeliveryAddress(e.target.value)}
+                          className="w-full px-3 py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          placeholder="Enter your delivery address"
+                          style={{ '::placeholder': { color: '#f48fb1' } }}
+                        />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -176,6 +177,7 @@ export default function CartPage() {
                       className="w-full px-3 py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                       placeholder="Any special instructions for delivery?"
                       rows={3}
+                      style={{ '::placeholder': { color: '#f48fb1' } }}
                     />
                   </div>
                   <button
@@ -200,4 +202,4 @@ export default function CartPage() {
       </footer>
     </div>
   );
-} 
+}

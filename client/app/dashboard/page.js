@@ -349,15 +349,13 @@ export default function DessertDashboard() {
         )}
       </main>
 
-      <footer className="bg-white border-t border-pink-200 mt-6">
+      <footer className="bg-white border-t border-pink-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-pink-600 mb-2 md:mb-0">
-              © 2025 Strictly Desserts. All rights reserved.
-            </p>
-          </div>
+          <p className="text-sm text-pink-600 text-center">
+            © 2025 Strictly Desserts. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
   );
-} 
+}
